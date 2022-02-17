@@ -1,0 +1,29 @@
+name: 'TodoAppDeploy'
+
+on: [push]
+
+env:
+  SubscriptionId: aefb9f9e-dedc-49ef-a434-640e525fe81d
+
+jobs: 
+  AzureBicepDeploy:
+    name: 'AzureBicepDeploy'
+    runs-on: ubuntu-latest
+    environment: production
+ 
+    steps:
+    - uses: actions/checkout@v2
+ 
+    - uses: azure/login@v1
+      with:
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
+ 
+    - name: Azure Bicep Build
+      run: |
+        az bicep build --file main.bicep
+ 
+    - name: Deploy Azure Bicep
+      uses: Azure/arm-deploy@v1
+      with:
+        subscriptionId: $SubscriptionId
+        params: githubToken='${{ secrets.PAT_GITHUB }}'
