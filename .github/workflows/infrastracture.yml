@@ -25,5 +25,5 @@ jobs:
     - name: Deploy Azure Bicep
       uses: Azure/arm-deploy@v1
       with:
-        subscriptionId: $SubscriptionId
+        subscriptionId: ${{ SubscriptionId }}
         parameters: githubToken='${{ secrets.PAT_GITHUB }}'
