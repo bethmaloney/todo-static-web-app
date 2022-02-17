@@ -26,4 +26,4 @@ jobs:
       uses: Azure/arm-deploy@v1
       with:
         subscriptionId: $SubscriptionId
-        params: githubToken='${{ secrets.PAT_GITHUB }}'
+        parameters: githubToken='${{ secrets.PAT_GITHUB }}'
