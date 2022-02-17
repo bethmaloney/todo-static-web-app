@@ -22,5 +22,8 @@ jobs:
     - name: Deploy Azure Bicep
       uses: Azure/arm-deploy@v1
       with:
-        subscriptionId: 'aefb9f9e-dedc-49ef-a434-640e525fe81d'
+        scope: subscription
+        region: australiaeast
+        template: main.bicep
+        deploymentName: todoapp
         parameters: githubToken='${{ secrets.PAT_GITHUB }}'
