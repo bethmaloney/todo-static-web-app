@@ -2,9 +2,6 @@ name: 'TodoAppDeploy'
 
 on: [push]
 
-env:
-  SubscriptionId: aefb9f9e-dedc-49ef-a434-640e525fe81d
-
 jobs: 
   AzureBicepDeploy:
     name: 'AzureBicepDeploy'
@@ -25,5 +22,5 @@ jobs:
     - name: Deploy Azure Bicep
       uses: Azure/arm-deploy@v1
       with:
-        subscriptionId: ${{ SubscriptionId }}
+        subscriptionId: 'aefb9f9e-dedc-49ef-a434-640e525fe81d'
         parameters: githubToken='${{ secrets.PAT_GITHUB }}'
