@@ -13,6 +13,7 @@ resource staticWebApp 'Microsoft.Web/staticSites@2021-03-01' = {
     branch: 'main'
     repositoryUrl: 'https://github.com/bethmaloney/todo-static-web-app'
     repositoryToken: githubToken
+    provider: 'GitHub'
     buildProperties: {
       appLocation: 'frontend'
       apiLocation: 'api'
