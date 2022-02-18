@@ -2,7 +2,7 @@ targetScope = 'subscription'
 @secure()
 param githubToken string
 
-param location string = 'australiaeast'
+param location string = 'eastasia'
 
 resource rg 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   name: 'rg-todoapp'
