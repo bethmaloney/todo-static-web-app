@@ -26,4 +26,5 @@ jobs:
         region: australiaeast
         template: main.bicep
         deploymentName: todoapp
+        deploymentMode: Complete
         parameters: githubToken='${{ secrets.PAT_GITHUB }}'
