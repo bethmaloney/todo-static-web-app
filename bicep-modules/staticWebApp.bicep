@@ -1,6 +1,9 @@
 param location string = resourceGroup().location
 @secure()
 param githubToken string
+@secure()
+param ikey string
+param appInsightsId string
 
 resource staticWebApp 'Microsoft.Web/staticSites@2021-03-01' = {
   location: location
@@ -8,6 +11,10 @@ resource staticWebApp 'Microsoft.Web/staticSites@2021-03-01' = {
   sku: {
     name: 'Free'
     tier: 'Free'
+  }
+  tags: {
+    'hidden-link: /app-insights-resource-id': appInsightsId
+    'hidden-link: /app-insights-instrmentation-key': ikey
   }
   properties: {
     branch: 'main'
@@ -19,27 +26,5 @@ resource staticWebApp 'Microsoft.Web/staticSites@2021-03-01' = {
       apiLocation: 'api'
       outputLocation: 'build'
     }
-  }
-}
-
-resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
-  name: 'law-todoapp'
-  location: location
-  properties: {
-    retentionInDays: 30
-    workspaceCapping: {
-      dailyQuotaGb: json('0.2')
-    }
-  }
-}
-
-resource insights 'Microsoft.Insights/components@2020-02-02' = {
-  name: 'appi-todoapp'
-  location: location
-  kind: 'web'
-  properties: {
-    WorkspaceResourceId: logAnalytics.id
-    Application_Type: 'web'
-    IngestionMode: 'LogAnalytics'
   }
 }

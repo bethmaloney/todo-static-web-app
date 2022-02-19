@@ -9,11 +9,21 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   location: location
 }
 
-module stg './bicep-modules/staticWebApp.bicep' = {
+module logging 'bicep-modules/logging.bicep' = {
+  name: 'logging'
+  scope: rg
+  params: {
+    location: rg.location
+  }
+}
+
+module staticWebApp './bicep-modules/staticWebApp.bicep' = {
   name: 'staticWebApp'
   scope: rg
   params: {
     location: rg.location
     githubToken: githubToken
+    appInsightsId: logging.outputs.appInsightsId
+    ikey: logging.outputs.appInsightsKey
   }
 }
