@@ -33,7 +33,6 @@ jobs:
         parameters: githubToken=${{ secrets.PAT_GITHUB }}
 
     - name: Preview Azure Bicep
-      uses: Azure/arm-deploy@v1
       run: |
         az deployment sub what-if \
           --location australiaeast \
