@@ -1,10 +1,16 @@
-import { Button, Layout, Space } from "antd";
+import { Button, Layout, Space, Typography } from "antd";
 import { GithubOutlined, TwitterOutlined, WindowsOutlined } from "@ant-design/icons";
 import { Content } from "antd/lib/layout/layout";
 import "./login.css";
+import Title from "antd/lib/skeleton/Title";
 
 const LoginButton: React.FC<{ authProvider: string }> = ({ authProvider, children }) => (
-    <Button type="primary" href={`/.auth/login/${authProvider}`} className="login-button">
+    <Button
+        type="primary"
+        href={`/.auth/login/${authProvider}`}
+        className="login-button"
+        size="large"
+    >
         {children}
     </Button>
 )
@@ -16,10 +22,10 @@ const Login = () => {
             <Content
                 className="site-layout-background"
             >
-                <h1 className="login-heading">
+                <Typography.Title className="login-heading" title="1">
                     Sign in to Todo App <br />
-                    <small>Welcome Back</small>
-                </h1>
+                    <small>Welcome Back!</small>
+                </Typography.Title >
                 <Space wrap={true} size="large" className="login-button-container">
                     <LoginButton authProvider="aad">
                         <WindowsOutlined /> Login with Microsoft
