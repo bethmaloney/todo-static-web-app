@@ -1,4 +1,4 @@
-name: 'TodoAppDeploy'
+name: 'Deploy Infrastructure'
 
 on:
   push:
