@@ -1,0 +1,26 @@
+.site-layout-background {
+    background: #fff;
+    padding: 24px;
+    margin: 0;
+    min-Height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-layout {
+    padding: 24px;
+    height: 100vh;
+}
+
+.login-button {
+    width: 12rem;
+}
+
+.login-button-container {
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.login-heading {
+    text-align: center;
+}
