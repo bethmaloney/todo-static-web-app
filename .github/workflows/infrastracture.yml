@@ -21,6 +21,26 @@ jobs:
     - name: Azure Bicep Build
       run: |
         az bicep build --file main.bicep
+
+    - name: Validate Azure Bicep
+      uses: Azure/arm-deploy@v1
+      with:
+        scope: subscription
+        region: australiaeast
+        template: main.bicep
+        deploymentName: todoapp
+        deploymentMode: validate
+        parameters: githubToken=${{ secrets.PAT_GITHUB }}
+
+    - name: Preview Azure Bicep
+      uses: Azure/arm-deploy@v1
+      with:
+        scope: subscription
+        region: australiaeast
+        template: main.bicep
+        deploymentName: todoapp
+        additionalArguments: what-if
+        parameters: githubToken=${{ secrets.PAT_GITHUB }}
  
     - name: Deploy Azure Bicep
       uses: Azure/arm-deploy@v1
