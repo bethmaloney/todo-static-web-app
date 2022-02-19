@@ -23,11 +23,13 @@ resource staticWebApp 'Microsoft.Web/staticSites@2021-03-01' = {
 }
 
 resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
-  name: 'log-todoapp'
+  name: 'law-todoapp'
   location: location
   properties: {
     retentionInDays: 30
-    workspaceCapping: json('0.2')
+    workspaceCapping: {
+      dailyQuotaGb: json('0.2')
+    }
   }
 }
 
