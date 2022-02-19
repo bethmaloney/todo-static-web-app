@@ -45,5 +45,5 @@ jobs:
         scope: subscription
         region: australiaeast
         template: main.bicep
-        deploymentName: todoapp
+        deploymentName: todoapp-${{ env.GITHUB_RUN_ATTEMPT }}
         parameters: githubToken=${{ secrets.PAT_GITHUB }}
